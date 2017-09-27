@@ -5,6 +5,7 @@ import Title from './components/Common/Title';
 import Search from './components/Search/Search';
 
 import './App.css'
+import Books from "./components/Common/Books";
 
 
 class BooksApp extends React.Component {
@@ -17,6 +18,10 @@ class BooksApp extends React.Component {
      */
     showSearchPage: false
   };
+
+  componentDidMount() {
+    BooksAPI.getAll().then(books => console.log(books));
+  }
 
   render() {
     return (
