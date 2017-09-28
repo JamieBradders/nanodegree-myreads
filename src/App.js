@@ -16,18 +16,21 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     books: [],
+    isWaiting: true,
     showSearchPage: false,
   };
 
   componentDidMount() {
     BooksAPI.getAll().then(books => {
-      console.log(books);
       this.setState({
         books,
+        isWaiting: false,
       });
     });
   }
 
+  // @note
+  // Add the isWaiting check to the main component and if it is true we show and indicator.
   render() {
     const { books } = this.state;
     return (
