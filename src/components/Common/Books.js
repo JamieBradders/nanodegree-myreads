@@ -4,10 +4,19 @@ import React from 'react';
 
 import Book from './Book';
 
-const Books = ({ books }) => (
+const Books = ({ books, shelf }) => (
   <div className="bookshelf-books">
     <ol className="books-grid">
-      { books.map(book => <li><Book /></li>) }
+      {
+        books.filter(book => book.shelf === shelf).map((book, index) => (
+          <li key={index}>
+            <Book
+              authors={book.authors}
+              image={book.imageLinks.thumbnail}
+              title={book.title} />
+          </li>
+        ))
+      }
     </ol>
   </div>
 );
